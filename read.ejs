@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>profile</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <div class="main w-full min-h-screen bg-zinc-900 p-10 text-white">
+        <a class="text-blue-500" href="/">Back to home</a>
+        <h1 class="text-2xl tracking-tight mt-3 mb-3">ALL USERS:-</h1> 
+        <div class="user flex gap-3 flex-wrap">
+            <% if(users.length > 0){%>
+                <% users.forEach(function(user){ %>
+                    <div class="user max-w-72 p-4 bg-zinc-800 rounded-lg">
+                        <div class="w-full h-72 bg-zinc-800 rounded-lg overflow-hidden">
+                            <img class="w-full h-full object-cover" src="<%= user.image %>" alt="">
+                        </div>
+                        <h3 class="text-xl mt 3 tracking-tighter"><%= user.name %></h3>
+                        <h5 class="text-zinc-500"><%= user.email %></h5>
+                        <div class="flex gap-3">
+                            <a class="text-yellow-500" href="/edit/<%=user._id%>">Edit user</a>
+                            <a class="text-red-500" href="/delete/<%= user._id %>">Delete user</a>
+                        </div>
+                    </div>
+                <%})%>
+            <% } else{ %>
+                <h2 class="text-zinc-500">No Users Yet</h2>
+           <% } %>
+        </div>
+    </div>
+
+</body>
+<footer style="text-align: center; padding: 20px; background-color: #6e68687c; ">
+    <p>Thank you for visiting!</p>
+    <p>&copy; 2024 Your Company Name. All rights reserved.</p>
+  </footer>
+</html>
